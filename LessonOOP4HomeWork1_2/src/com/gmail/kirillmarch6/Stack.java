@@ -41,15 +41,16 @@ public class Stack {
 		this.top = top;
 	}
 
-	public void addObject(Object obj) {
-		if (isFull() == false) {
-			top++;
-			stackArray[top] = obj;
-			System.out.println("В стек добавлен обьект - " + obj);
-		} else {
-			System.out.println("Стек полон! Добавление невозможно!");
-		}
-
+	public void addObject(Object obj, BlackList bl) {
+		if(bl.findInBlackList(obj.getClass()) == false) {
+			if (isFull() == false) {
+				top++;
+				stackArray[top] = obj;
+				System.out.println("В стек добавлен обьект - " + obj);
+			} else {
+				System.out.println("Стек полон! Добавление невозможно!");
+			}
+		} 
 	}
 
 	public Object deleteObject() {
